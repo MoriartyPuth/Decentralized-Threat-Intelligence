@@ -50,11 +50,14 @@ This allows researchers to find the "Sweet Spot" for IIoT security deployments.
 ## 🛠️ Installation & Setup
 
 Clone the Repository:
-- git clone [https://github.com/yourusername/IIoT-Security-Project.git
-cd IIoT-Security-Project](https://github.com/MoriartyPuth/Decentralized-Threat-Intelligence)
+- git clone https://github.com/MoriartyPuth/Decentralized-Threat-Intelligence
 
 Install Dependencies:
 - pip install -r requirements.txt
 
 Run the Dashboard:
 - python -m streamlit run app.py
+
+## <img width="128" height="128" alt="image" src="https://github.com/user-attachments/assets/cf62b971-f1b7-4bc8-8b28-8fd07d7fe705" />
+
+
