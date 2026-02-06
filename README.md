@@ -58,9 +58,13 @@ Install Dependencies:
 Run the Dashboard:
 - python -m streamlit run app.py
 
-## <img width="128" height="128" alt="image" src="https://github.com/user-attachments/assets/cf62b971-f1b7-4bc8-8b28-8fd07d7fe705" />
+## 📸 Inteface
 
 <img width="1912" height="938" alt="Screenshot 2026-02-04 002150" src="https://github.com/user-attachments/assets/3947bec1-036b-4c50-b557-b4fa5f608c71" />
 <img width="1529" height="759" alt="image" src="https://github.com/user-attachments/assets/8101590a-11c3-4a98-859f-3caa28ad418a" />
 
+
+## ⚖️ Disclaimer
+
+This project is intended for defensive and educational purposes only. It does not provide offensive tooling or exploit code.
 
