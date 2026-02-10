@@ -39,6 +39,56 @@ Network trust is managed via a dynamic reputation function $R$:
 - Honest Participation: $R_{t+1} = R_t + 5$
 - Malicious Detection: $R_{t+1} = R_t - 35$
 
+### 🔄 Logical Data Flow
+```mermaid
+sequenceDiagram
+    participant Device as IIoT Edge Device
+    participant AI as Local Model (PyTorch)
+    participant Sec as Security Controller (Krum)
+    participant BC as Blockchain (Web3)
+
+    Note over Device, BC: Start Federated Round
+    Device->>AI: Train on Local Data
+    AI->>AI: Apply Differential Privacy (Add Noise)
+    AI->>Sec: Submit Model Update
+    
+    alt Update is Honest
+        Sec->>BC: Validate & Aggregate Update
+        BC->>Device: Reward Reputation (+5)
+    else Update is Malicious (Outlier)
+        Sec->>Sec: Detect via Euclidean Distance
+        Sec->>BC: Flag Byzantine Activity
+        BC->>Device: Slash Reputation (-35)
+    end
+    
+    BC->>AI: Broadcast New Global Model
+```
+### 🗺️ System Topology
+```mermaid
+graph TD
+    subgraph "IIoT Edge Layer"
+        N1[IIoT Node 1 - Honest]
+        N2[IIoT Node 2 - Honest]
+        N3[IIoT Node 3 - Malicious]
+    end
+
+    subgraph "Security Layer (Consensus)"
+        DP{Differential Privacy Filter}
+        Krum[Multi-Krum Aggregator]
+    end
+
+    subgraph "Blockchain Layer"
+        BC[(Immutable Ledger)]
+        Rep[Reputation System]
+    end
+
+    N1 & N2 & N3 --> DP
+    DP --> Krum
+    Krum --> BC
+    BC --> Rep
+    Rep -.->|Update Trust Score| N1 & N2 & N3
+```
+
 ## 📊 Scientific Evaluation
 
 The Analytics Tab in the dashboard provides a simulated evaluation of the model performance. It demonstrates that while increasing Privacy Noise ($\sigma$) protects data, it leads to a non-linear decay in accuracy, following the curve:
